@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from 'react';
-import { Package } from '@/types/package';
+import { useEffect, useState } from "react";
+import { Package } from "@/types/package";
 
 interface TableThreeProps {}
 
@@ -10,29 +10,30 @@ const TableThree: React.FC<TableThreeProps> = () => {
   const pageSize = 10; // Set your desired page size
   const [filteredData, setFilteredData] = useState<Package[]>([]);
   const [filters, setFilters] = useState({
-    endYear: '',
-    topic: '',
-    sector: '',
-    region: '',
-    pestle: '',
-    source: '',
-    country: '',
+    endYear: "",
+    topic: "",
+    sector: "",
+    region: "",
+    pestle: "",
+    source: "",
+    country: "",
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://weather-kappa-five.vercel.app/api/v1/weather/information');
+        const response = await fetch(
+          "https://weather-kappa-five.vercel.app/api/v1/weather/information"
+        );
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error("Failed to fetch data");
         }
         const data = await response.json();
         setWeatherData(data);
         // Assuming your packageData is an array of packages
         setFilteredData(data?.data);
       } catch (error) {
-        console.error('Error fetching weather data:', error);
+        console.error("Error fetching weather data:", error);
       }
     };
 
@@ -66,23 +67,29 @@ const TableThree: React.FC<TableThreeProps> = () => {
     setFilteredData(filteredResult || []);
   };
 
-  const filteredAndPagedData = filteredData?.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
-
+  const filteredAndPagedData = filteredData?.slice(
+    currentPage * pageSize,
+    (currentPage + 1) * pageSize
+  );
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       {/* Your other components */}
       <div className="max-w-full overflow-x-auto">
-      <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-4 mb-4">
           {/* Example filter dropdown, repeat for other filters */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">End Year</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              End Year
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-30 bg-body"
-              onChange={(e) => handleFilterChange('endYear', e.target.value)}
+              onChange={(e) => handleFilterChange("endYear", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.end_year))).map((year) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.end_year))
+              ).map((year: any) => (
                 <option key={year} value={year}>
                   {year}
                 </option>
@@ -90,13 +97,17 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Topic</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Topic
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('topic', e.target.value)}
+              onChange={(e) => handleFilterChange("topic", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.topic))).map((top) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.topic))
+              ).map((top: any) => (
                 <option key={top} value={top}>
                   {top}
                 </option>
@@ -104,13 +115,17 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Sector</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Sector
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('sector', e.target.value)}
+              onChange={(e) => handleFilterChange("sector", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.sector))).map((sec) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.sector))
+              ).map((sec: any) => (
                 <option key={sec} value={sec}>
                   {sec}
                 </option>
@@ -118,13 +133,17 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Country</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Country
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('country', e.target.value)}
+              onChange={(e) => handleFilterChange("country", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.country))).map((country) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.country))
+              ).map((country: any) => (
                 <option key={country} value={country}>
                   {country}
                 </option>
@@ -132,13 +151,17 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Region</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Region
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('region', e.target.value)}
+              onChange={(e) => handleFilterChange("region", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.region))).map((reg) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.region))
+              ).map((reg: any) => (
                 <option key={reg} value={reg}>
                   {reg}
                 </option>
@@ -146,13 +169,17 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Pestle</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Pestle
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('pestle', e.target.value)}
+              onChange={(e) => handleFilterChange("pestle", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.pestle))).map((pest) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.pestle))
+              ).map((pest: any) => (
                 <option key={pest} value={pest}>
                   {pest}
                 </option>
@@ -160,29 +187,34 @@ const TableThree: React.FC<TableThreeProps> = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Source</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Source
+            </label>
             <select
               className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
-              onChange={(e) => handleFilterChange('source', e.target.value)}
+              onChange={(e) => handleFilterChange("source", e.target.value)}
             >
               <option value="">All</option>
-              {Array.from(new Set(weatherData?.data.map((item: any) => item.source))).map((source) => (
+              {Array.from(
+                new Set(weatherData?.data.map((item: any) => item.source))
+              ).map((source: any) => (
                 <option key={source} value={source}>
                   {source}
                 </option>
               ))}
             </select>
           </div>
-         
         </div>
 
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md bg-black" onClick={applyFilters}>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md bg-black"
+          onClick={applyFilters}
+        >
           Apply Filters
         </button>
         <table className="w-full table-auto">
           <thead>
             <tr className="text-sm leading-4 text-gray-500 dark:text-gray-400 border-b-2 rounded-md">
-              
               <th className="px-2.5 py-3.5 text-left">E-Year</th>
               <th className="px-2.5 py-3.5 text-left">Added</th>
               <th className="px-2.5 py-3.5 text-left">Topic</th>
@@ -191,11 +223,10 @@ const TableThree: React.FC<TableThreeProps> = () => {
               <th className="px-2.5 py-3.5 text-left">Region</th>
               <th className="px-2.5 py-3.5 text-left">Pestle</th>
               <th className="px-2.5 py-3.5 text-left">Source</th>
-              
             </tr>
           </thead>
           <tbody className="text-sm font-medium leading-4 text-gray-500 dark:text-gray-400">
-            {filteredAndPagedData?.map((item: any , index) => (
+            {filteredAndPagedData?.map((item: any, index) => (
               <tr key={item?._id}>
                 <td className="px-2.5 py-3.5">{item?.end_year}</td>
                 <td className="px-2.5 py-3.5">{item?.added}</td>
@@ -210,13 +241,21 @@ const TableThree: React.FC<TableThreeProps> = () => {
           </tbody>
         </table>
         <div className="mb-5 mt-10 flex justify-between items-center">
-          <button className='bg-black px-3 text-bodydark1 rounded-md hover:bg-opacity-70 duration-500' onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 0}>
+          <button
+            className="bg-black px-3 text-bodydark1 rounded-md hover:bg-opacity-70 duration-500"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 0}
+          >
             Previous
           </button>
           <span>
             Page <strong>{currentPage + 1}</strong>
           </span>
-          <button className='bg-black px-3 text-bodydark1 rounded-md hover:bg-opacity-70 duration-500' onClick={() => handlePageChange(currentPage + 1)} disabled={(currentPage + 1) * pageSize >= filteredData?.length}>
+          <button
+            className="bg-black px-3 text-bodydark1 rounded-md hover:bg-opacity-70 duration-500"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={(currentPage + 1) * pageSize >= filteredData?.length}
+          >
             Next
           </button>
         </div>
