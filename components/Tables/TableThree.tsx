@@ -83,7 +83,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               End Year
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-30 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-30 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("endYear", e.target.value)}
             >
               <option value="">All</option>
@@ -101,7 +101,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Topic
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("topic", e.target.value)}
             >
               <option value="">All</option>
@@ -119,7 +119,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Sector
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("sector", e.target.value)}
             >
               <option value="">All</option>
@@ -137,7 +137,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Country
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("country", e.target.value)}
             >
               <option value="">All</option>
@@ -155,7 +155,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Region
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("region", e.target.value)}
             >
               <option value="">All</option>
@@ -173,7 +173,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Pestle
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("pestle", e.target.value)}
             >
               <option value="">All</option>
@@ -191,7 +191,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
               Source
             </label>
             <select
-              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-body"
+              className="mt-1 p-2 border border-none outline-none rounded-md w-34 bg-secondary dark:bg-primary"
               onChange={(e) => handleFilterChange("source", e.target.value)}
             >
               <option value="">All</option>
@@ -215,7 +215,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
         <table className="w-full table-auto">
           <thead>
             <tr className="text-sm leading-4 text-gray-500 dark:text-gray-400 border-b-2 rounded-md">
-              <th className="px-2.5 py-3.5 text-left">E-Year</th>
+              <th className="px-2.5 py-3.5 text-left">EndYear</th>
               <th className="px-2.5 py-3.5 text-left">Added</th>
               <th className="px-2.5 py-3.5 text-left">Topic</th>
               <th className="px-2.5 py-3.5 text-left">Sector</th>
@@ -248,7 +248,7 @@ const TableThree: React.FC<TableThreeProps> = () => {
           >
             Previous
           </button>
-          <span>
+          <span className="text-secondary dark:text-primary font-bold">
             Page <strong>{currentPage + 1}</strong>
           </span>
           <button
